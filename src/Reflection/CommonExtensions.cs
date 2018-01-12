@@ -5,21 +5,6 @@ using System.Reflection;
 
 namespace TinyHelpers.Reflection
 {
-    public class CopyAttribute : Attribute
-    {
-        public bool Exclude
-        {
-            get;
-            set;
-        }
-        public string FromProperty { get; set; }
-    }
-
-    public interface IRunOnCopy
-    {
-        void DataCopied(object fromObject);
-    }
-
     public static class GenericExtensions
     {
         public static IEnumerable<(PropertyInfo prp, T attr)> GetPropertiesWithAttribute<T>(this object o) where T : Attribute
