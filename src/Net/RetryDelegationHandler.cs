@@ -20,12 +20,14 @@ namespace TinyHelpers.Reflection
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
+            var uid = Guid.NewGuid().ToString();
             int retrys = 0;
             var lastException = new Exception("Unknown error in retryhandler");
             while (retrys++ <= MaxRetrys)
             {
                 try
                 {
+                    request.Headers.Add("retryid", uid);
                     if (retrys > 1)
                         request.Headers.Add("x-retry", retrys.ToString());
                     var ret = await base.SendAsync(request, cancellationToken);
