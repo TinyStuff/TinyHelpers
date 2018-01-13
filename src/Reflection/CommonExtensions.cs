@@ -50,7 +50,7 @@ namespace TinyHelpers.Reflection
             }
         }
 
-        public static void MemberviseCopyTo(this object a, object b, bool overwrite = true)
+        public static void MemberwiseCopyTo(this object a, object b, bool overwrite = true)
         {
             var aType = a.GetType();
             var bType = b.GetType();
